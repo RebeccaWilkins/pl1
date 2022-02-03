@@ -5,79 +5,44 @@
 <html>
   <head>
     <title>Dynamic Map</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
-    <style type="text/css">
-      /* Set the size of the div element that contains the map */
-      #map {
-        height: 400px;
-        /* The height is 400 pixels */
-        width: 100%;
-        /* The width is the width of the web page */
-      }
-    </style>
-    <script>
-let map;
-      // Initialize and add the map
-      function initMap() {
-        // The location of ON
+<style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#map {
+  height: 100%;
+}
+
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+</style>
+<script>
+      let map;
+// The location of ON
         const ontario = { lat: 51.2538, lng: -85.3232 };
-        // The location of kingston
-        const kingston = { lat: 44.2312, lng: -76.4860 };
-        // The location of ottawa
-        const ottawa_altavista = { lat: 45.3861, lng: -75.6706 };
-        // The location of claysburg, PA
-        const claysburg = { lat: 40.2967, lng: -78.4497 };
-        // The location of belleville
-        const belleville = { lat: 44.1628, lng: -77.3832 };
-        // The location of guelph
-        const guelph = { lat: 43.5448, lng: -80.2482 };
-        // The location of stirling
-        const ottawa_downtown = { lat: 45.424721, lng: -75.695000 };      
-        // The location of stirling
-        const stirling = { lat: 44.2962, lng: --77.5475 }; 
-        
-        // The map, centered at ON
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 6,
-          center: ontario,
-        });
-        
-        // Marker positioned at Kingston
-        const marker_kingston = new google.maps.Marker({
-          position: kingston,
-          map: map,
-        });
-        const marker_ottawa_altavista = new google.maps.Marker({
-        position: ottawa_altavista,
-        map: map,
-        });
-        const marker_claysburg = new google.maps.Marker({
-          position: claysburg,
-          map: map,
-        });
-        const marker_belleville = new google.maps.Marker({
-          position: belleville,
-          map: map,
-        });
-        const marker_guelph = new google.maps.Marker({
-          position: guelph,
-          map: map,
-        });
-        const marker_ottawa_downtown = new google.maps.Marker({
-          position: ottawa_downtown,
-          map: map,
-        });
-        const marker_stirling = new google.maps.Marker({
-          position: stirling,
-          map: map,
-        });
-      }
-    </script>
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { ontario },
+    zoom: 8,
+  });
+}
+</script>
   </head>
   <body>
-    <h3>My Google Maps Demo</h3>
-    <!--The div element for the map -->
     <div id="map"></div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv3MGflguusDaLmV_-BUlmuoUI4EbM88w&callback=initMap&v=weekly"
+      async
+    ></script>
+  </body>
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
