@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <!-- source: https://developers.google.com/maps/documentation/javascript/overview#maps_map_simple-html -->
 <!-- STUDENTS: Modify this file to provided the Google API key to get it working, 
-               then modify the lat and lng and zoom to point to a place you know  -->
+               then modify the lat and lng and zoom to point to a place you know  
+
+https://rebeccawilkins.github.io/pl1/services/simplemap.html
+-->
 <html>
   <head>
     <title>Simple Map</title>
@@ -26,8 +29,8 @@
 
       function initMap() {
         map = new google.maps.Map(document.getElementById("map"), {
-          center: { lat: -34.397, lng: 150.644 },
-          zoom: 8,
+          center: { lat: 44.166667, lng: 77.383333 },
+          zoom: 10,
         });
       }
     </script>
@@ -37,7 +40,7 @@
     
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <!-- *** STUDENTS: Replace YOUR_API_KEY text with provided key in class for property src in next line *** -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&v=weekly" async>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv3MGflguusDaLmV_-BUlmuoUI4EbM88w&callback=initMap&v=weekly" async>
     </script>
   </body>
 </html>
