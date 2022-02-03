@@ -1,4 +1,4 @@
-<!--https://rebeccawilkins.github.io/pl1/services/mydirections.md -->
+https://rebeccawilkins.github.io/pl1/services/mydirections.md
 
 # My personal directions request
 
