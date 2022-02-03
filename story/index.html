@@ -1,38 +1,103 @@
 <!DOCTYPE html>
 
 <!-- https://rebeccawilkins.github.io/pl1/story-->
+<!-- using code from https://developers.google.com/maps/documentation/javascript/custom-markers#maps_custom_markers-javascript -->
 
 <html>
   <head>
-    <title>Dynamic Map</title>
+    <title>Custom Markers</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-
-<style>
-      /* Always set the map height explicitly to define the size of the div
+    <style>
+    /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 #map {
   height: 100%;
+  width: 100%;
 }
 
-/* Optional: Makes the sample page fill the window. */
 html,
 body {
   height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
 }
-</style>
-<script>
-      let map;
-// The location of ON
-        const ontario = { lat: 51.2538, lng: -85.3232 };
+    </style>
+    <script>
+    let map;
+
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { ontario },
+    center: new google.maps.LatLng(51.2538, -85.3232), /*centre on ON*/
     zoom: 8,
   });
+
+  const iconBase =
+    "https://developers.google.com/maps/documentation/javascript/examples/full/images/";
+  const icons = {
+    paddle1: {
+      icon: "http://maps.google.com/mapfiles/kml/paddle/1.png",
+    },
+    paddle2: {
+      icon: "http://maps.google.com/mapfiles/kml/paddle/2.png",
+    },
+    paddle3: {
+      icon: "http://maps.google.com/mapfiles/kml/paddle/3.png",
+    },
+    paddle4: {
+      icon: "http://maps.google.com/mapfiles/kml/paddle/4.png",
+    },
+    paddle5: {
+      icon: "http://maps.google.com/mapfiles/kml/paddle/5.png",
+    },
+    paddle6: {
+      icon: "http://maps.google.com/mapfiles/kml/paddle/6.png",
+    },
+    paddle7: {
+      icon: "http://maps.google.com/mapfiles/kml/paddle/7.png",
+    },
+  };
+  const features = [
+    {
+      position: new google.maps.LatLng(44.2312, -76.4860), /* Kingston */
+      type: "paddle1",
+    },
+    {
+      position: new google.maps.LatLng(45.3861, -75.6706), /* Ottawa - Alta Vista */
+      type: "paddle2",
+    },
+    {
+      position: new google.maps.LatLng(40.2967, -78.4497), /* Claysburg */
+      type: "paddle3",
+    },
+    {
+      position: new google.maps.LatLng(44.1628, -77.3832), /* Belleville */
+      type: "paddle4",
+    },
+    {
+      position: new google.maps.LatLng(43.5448, -80.2482), /* Guelph */
+      type: "paddle5",
+    },
+    {
+      position: new google.maps.LatLng(45.424721, -75.695000), /* Ottawa - Downtown */
+      type: "paddle6",
+    },
+    {
+      position: new google.maps.LatLng(44.2962, -77.5475), /* Stirling */
+      type: "paddle7",
+    },
+  ];
+
+  // Create markers.
+  for (let i = 0; i < features.length; i++) {
+    const marker = new google.maps.Marker({
+      position: features[i].position,
+      icon: icons[features[i].type].icon,
+      map: map,
+    });
+  }
 }
-</script>
+    </script>
   </head>
   <body>
     <div id="map"></div>
@@ -40,13 +105,6 @@ function initMap() {
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv3MGflguusDaLmV_-BUlmuoUI4EbM88w&callback=initMap&v=weekly"
-      async
-    ></script>
-  </body>
-
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv3MGflguusDaLmV_-BUlmuoUI4EbM88w&callback=initMap&libraries=&v=weekly"
       async
     ></script>
   </body>
