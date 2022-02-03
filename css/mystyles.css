@@ -19,6 +19,10 @@ body, html {
   font-family: 'Raleway', sans-serif
 }
 
+h2 {
+  margin-top: 20px;
+}
+
 /* Applies top navigation bar */
 .topnav {
     background-color: #7bded5;
